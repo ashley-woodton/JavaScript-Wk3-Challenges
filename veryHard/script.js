@@ -19,7 +19,7 @@ function Person(name, job, age) {
 }
 
 Person.prototype.exercise = function () {
-    console.log("Tabata is a great way to workout!")
+    console.log(`${this.name}, tabata is a great way to workout!`)
 }
 
 Person.prototype.fetchJob = function () {
@@ -37,6 +37,9 @@ function Programmer(name, job, age, languages = []) {
     this.languages = languages;
     this.busy = true;
 }
+
+Programmer.prototype = Object.create(Person.prototype) // re-define child prototype to Parent prototype
+
 
 Programmer.prototype.completeTask = function () {
     this.busy = false;
@@ -67,6 +70,8 @@ Programmer.prototype.listLanguages = function () {
 var Jason = new Programmer("Jason", "Full Stack Developer", 26, ["HTML"])
 
 console.log(Jason);
+Jason.exercise();
+Jason.fetchJob();
 Jason.completeTask();
 console.log(Jason.offerNewTask());
 Jason.acceptNewTask();
