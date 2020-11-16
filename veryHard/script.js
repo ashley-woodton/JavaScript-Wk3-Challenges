@@ -26,3 +26,50 @@ Person.prototype.fetchJob = function () {
     console.log(`${this.name} is a ${this.job}.`)
 }
 
+var Kayden = new Person('Kayden', 'Realtor', 26);
+
+var languages = [];
+
+function Programmer(name, job, age, languages) {
+    Person.call(this, name, job, age)
+    this.languages = languages;
+    this.busy = true;
+}
+
+Programmer.prototype.completeTask = function () {
+    this.busy = false;
+}
+
+Programmer.prototype.acceptNewTask = function () {
+    this.busy = true;
+}
+
+Programmer.prototype.offerNewTask = function () {
+    if (this.busy === true) {
+        console.log(`${this.name} can't accept any new tasks right now.`)
+    } else {
+        console.log(`${this.name} would love to take on a new responsibility.`)
+    }
+}
+
+Programmer.prototype.learnLanguage = function () {
+    this.languages = languages.push("JavaScript", "CSS", "Python", "C#", "Java", "C++", "Node");
+}
+
+Programmer.prototype.listLanguages = function () {
+    var i = 0;
+    do {
+        return languages[i]
+        i++
+    } while (i < languages.length)
+}
+
+var Jason = new Programmer("Jason", "Full Stack Developer", 26, "HTML")
+
+console.log(Jason);
+Jason.completeTask();
+console.log(Jason.offerNewTask());
+Jason.acceptNewTask();
+console.log(Jason.offerNewTask());
+Jason.learnLanguage();
+console.log(Jason.listLanguages())

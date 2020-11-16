@@ -2,14 +2,19 @@
 // Creating private objects and private properties helps you control who has access to what data and helps you prevent people who shouldn't see important info like social security numbers from getting access to the data.
 // You can use 'getName' or other get methods to access data that people might need. For example, people addressing a package or email may need a customer's name, but they definitely shouldn't have access to their ssn.
 
-
 let getName = () => {
 
-    var pii = {
-        name: "Ashley Woodton",
-        ssn: "101-10-1010"
+    const personalInfo = () => {
+        var pii = {
+            name: "Ashley Woodton",
+            ssn: "101-10-1010"
+        }
+
+        return pii.name
     }
-    return pii.name
+    return personalInfo()
 }
 
-console.log(getName());
+const getPublicInfo = getName();
+
+console.log(getPublicInfo);
