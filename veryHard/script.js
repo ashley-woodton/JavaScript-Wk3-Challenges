@@ -27,10 +27,12 @@ Person.prototype.fetchJob = function () {
 }
 
 var Kayden = new Person('Kayden', 'Realtor', 26);
+Kayden.fetchJob();
+Kayden.exercise();
 
-var languages = [];
 
-function Programmer(name, job, age, languages) {
+
+function Programmer(name, job, age, languages = []) {
     Person.call(this, name, job, age)
     this.languages = languages;
     this.busy = true;
@@ -53,18 +55,16 @@ Programmer.prototype.offerNewTask = function () {
 }
 
 Programmer.prototype.learnLanguage = function () {
-    this.languages = languages.push("JavaScript", "CSS", "Python", "C#", "Java", "C++", "Node");
+    this.languages.push("JavaScript", "CSS", "Python", "C#", "Java", "C++");
 }
 
 Programmer.prototype.listLanguages = function () {
-    var i = 0;
-    do {
-        return languages[i]
-        i++
-    } while (i < languages.length)
+    for (var i = 0; i < this.languages.length; i++) {
+        console.log(`${this.languages[i]}`)
+    }
 }
 
-var Jason = new Programmer("Jason", "Full Stack Developer", 26, "HTML")
+var Jason = new Programmer("Jason", "Full Stack Developer", 26, ["HTML"])
 
 console.log(Jason);
 Jason.completeTask();
@@ -72,4 +72,4 @@ console.log(Jason.offerNewTask());
 Jason.acceptNewTask();
 console.log(Jason.offerNewTask());
 Jason.learnLanguage();
-console.log(Jason.listLanguages())
+console.log(Jason.listLanguages());
